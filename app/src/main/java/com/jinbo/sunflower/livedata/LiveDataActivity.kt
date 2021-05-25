@@ -1,12 +1,11 @@
 package com.jinbo.sunflower.livedata
 
 import android.os.Bundle
-import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
 import androidx.lifecycle.Observer
 import com.jinbo.sunflower.R
 import com.jinbo.sunflower.databinding.ActivityLivedataBinding
@@ -30,17 +29,28 @@ class LiveDataActivity : AppCompatActivity() {
             this,
             R.layout.activity_livedata
         )
-        tv_city = findViewById(R.id.tv_city)
 
+
+        //手动绑定 observer
+        tv_city = findViewById(R.id.tv_city)
         var observer = Observer<String> {
             tv_city.text = "我是手动观察的$it"
         }
-
         viewModel.currentCity.observe(this, observer)
 
         binding.lifecycleOwner = this
-
         binding.viewmodel = viewModel
+
+
+        //手动修改liveData数值, mutableLiveData支持
+        val button = findViewById<Button>(R.id.btn_manul_change)
+        var telVersion = 0
+        button.setOnClickListener {
+            viewModel.multaLiveData.value = "click times ${telVersion++}"
+        }
+
+        viewModel.multaLiveData.observe(this,
+            Observer { t -> findViewById<Button>(R.id.btn_manul_change).text = t })
     }
 
 }

@@ -25,6 +25,8 @@ class LiveDataViewModel(
 
     val cacheValue = dataSource.cachedData
 
+    val multaLiveData = MutableLiveData<String>()
+
     fun refresh() {
         viewModelScope.launch {
             dataSource.fetchNewWheather()

@@ -34,23 +34,29 @@
             android:textSize="14sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewmodel.cacheValue}"
-            android:textSize="14sp" />
-
-        <TextView
             android:id="@+id/tv_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.cacheValue}"
+            android:textSize="14sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->viewmodel.refresh()}"
             android:text="更新天气" />
+
+        <Button
+            android:id="@+id/btn_manul_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手动更新天气" />
 
     </LinearLayout>
 
