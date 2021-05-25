@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import kotlin.random.Random
 
 /**
  * @author   houjinbo
