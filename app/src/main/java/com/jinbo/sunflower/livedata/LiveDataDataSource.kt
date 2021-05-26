@@ -24,7 +24,6 @@ class LiveDataDataSource : DataSource {
 
     override fun randomCity(): LiveData<String> = liveData {
         while (true) {
-
             emit(weatherConditions[(weatherConditions.indices).random()])
             delay(2000)
         }
@@ -32,14 +31,16 @@ class LiveDataDataSource : DataSource {
 
     private val _cacheData = MutableLiveData("今天天气不错")
 
-    override val cachedData: LiveData<String> = _cacheData
+    override val wheatherLiveData: LiveData<String> = _cacheData
 
     override suspend fun fetchNewWheather() {
         _cacheData.value = "稍等，主人，正在看现在天气..."
         _cacheData.value = fetchLastedWeather()
 
     }
+
     private val weatherListMock = listOf("今天是好天气，真不错", "今天可能有雨哦，记得带伞", "今天没太阳，不用怕晒黑啦")
+
 
     private suspend fun fetchLastedWeather(): String = withContext(Dispatchers.IO) {
         delay(1000)
@@ -54,7 +55,7 @@ interface DataSource {
 
     fun randomCity(): LiveData<String>
 
-    val cachedData: LiveData<String>
+    val wheatherLiveData: LiveData<String>
 
     suspend fun fetchNewWheather()
 
