@@ -44,6 +44,7 @@ class LiveDataViewModel(
     }
 
     private var count = 0
+
     /**
      * 合并数据使用
      */
@@ -66,6 +67,34 @@ class LiveDataViewModel(
     fun refresh() {
         viewModelScope.launch {
             dataSource.fetchNewWheather()
+        }
+    }
+
+    /**
+     * 将天气数据更新显示
+     */
+    var switchMapLiveData = wheatherLiveData.switchMap {
+        liveData {
+            if (it.contains("雨")) {
+                emit("flatMap后：大雨来了，快收衣服啊")
+            } else if (it.contains("太阳")) {
+                emit("flatMap后：又要被晒黑了")
+            } else {
+                emit("flatMap后：啥事没有，出发")
+            }
+        }
+    }
+
+    /**
+     * 将天气数据更新显示
+     */
+    var mapLiveData = wheatherLiveData.map {
+        if (it.contains("雨")) {
+            "map后: 大雨来了，快收衣服啊"
+        } else if (it.contains("太阳")) {
+            "map后: 又要被晒黑了"
+        } else {
+            "map后: 啥事没有，出发"
         }
     }
 

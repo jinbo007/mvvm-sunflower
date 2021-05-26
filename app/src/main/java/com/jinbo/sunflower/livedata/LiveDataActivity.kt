@@ -47,6 +47,8 @@ class LiveDataActivity : AppCompatActivity() {
         initMediatorLiveData()//测试MediatorLiveData 组合形式LiveData
 
 
+        initFlatMapLiveData()//测试flatmap Data测试
+
     }
 
     /**
@@ -92,5 +94,12 @@ class LiveDataActivity : AppCompatActivity() {
             viewModel.refreshMediatorData()
         }
     }
+
+
+    private fun initFlatMapLiveData() {
+
+
+    }
+
 
 }

@@ -46,11 +46,18 @@
             android:text="@{viewmodel.wheatherLiveData}"
             android:textSize="14sp" />
 
+        <TextView
+            android:id="@+id/tv_switch_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.switchMapLiveData}"
+            android:textSize="14sp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->viewmodel.refresh()}"
-            android:text="更新天气" />
+            android:text="查詢天气" />
 
         <TextView
             android:id="@+id/tv_manual_observe"
@@ -71,6 +78,17 @@
             android:layout_height="wrap_content"
             android:text="@{viewmodel.mediatorLiveData}"
             android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.mapLiveData}"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewmodel.switchMapLiveData}"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btn_mediator_live_data"
@@ -78,6 +96,8 @@
             android:layout_height="wrap_content"
             android:text="合并LiveData(MediatorLiveData)"
             android:textAllCaps="false" />
+
+
 
     </LinearLayout>
 
