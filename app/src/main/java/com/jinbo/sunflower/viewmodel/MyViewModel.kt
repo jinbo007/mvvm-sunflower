@@ -9,25 +9,34 @@ import androidx.lifecycle.ViewModel
  * @date  2021/5/26
  */
 class MyViewModel : ViewModel() {
+
+    private var userList: MutableList<User> = ArrayList()
+
+    init {
+        userList.add(User("小明", 19))
+        userList.add(User("小花", 25))
+        userList.add(User("小利", 37))
+    }
+
     /**
      * notice it mutablLiveData没有set方法，必须设置更新项
      */
-    private val users: MutableLiveData<List<User>> = MutableLiveData<List<User>>()
+    private val users: MutableLiveData<User> by lazy {
+        MutableLiveData<User>().also {
+            it.postValue(userList[0]);
+        }
+    }
 
-    fun getUsers(): LiveData<List<User>> {
+    fun getUsers(): LiveData<User> {
         return users
     }
+
 
     /**
      * 查询用户信息
      */
-    fun queryUsers() {
-//        viewModelScope.launch {
-        var userList: MutableList<User> = ArrayList()
-        userList.add(User("小明", 18))
-        userList.add(User("小黃", 24))
-        userList.add(User("小丽", 22))
-        users.postValue(userList)
+    fun updateUser() {
+        users.postValue(userList.random())
     }
 
 }

@@ -27,7 +27,7 @@ class ViewModelActivity : AppCompatActivity() {
         })
 //
         findViewById<Button>(R.id.btn_load_user).setOnClickListener {
-            viewModle.queryUsers()
+            viewModle.updateUser()
         }
     }
 }
